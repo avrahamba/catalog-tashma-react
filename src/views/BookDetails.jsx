@@ -5,15 +5,17 @@ const BookDetails = () => {
 
     const [route, setRoute] = useState(window.location.hash.substr(1));
     const [book, setBook] = useState(null);
-
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             setRoute(window.location.hash.substr(1));
+            init()
         })
-        const bookId = route.substr(5);
-        http.getBook(bookId)
-            .then(book =>{console.log('book', book); setBook(book)})
+        init()
     }, [])
+    const init = async () => {
+        const bookId = window.location.hash.substr(1).substr(5);
+        setBook(await http.getBook(bookId))
+    }
 
     return (
         <div>
