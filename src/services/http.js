@@ -26,10 +26,16 @@ const getNews = async () => {
     return res.data
 }
 
+const getFind = async (find) => {
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?find=${find}`)
+    return res.data
+}
+
 export const http = {
     getCategoryList,
     getCategory,
     getBook,
     getAuthor,
-    getNews
+    getNews,
+    getFind
 }

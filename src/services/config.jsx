@@ -1,2 +1,2 @@
-// export const baseUrl = '/catalog/';
-export const baseUrl  = '';
+export const baseUrl = '/catalog/';
+// export const baseUrl  = '';
