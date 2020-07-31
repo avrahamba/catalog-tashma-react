@@ -20,6 +20,7 @@ const AuthorDetails = () => {
     return (
         <div>
             {JSON.stringify(author)}
+    {author ? <h2>{author.author.name}</h2>:''}
            {author ? <BookList bookList={author.books}/>:''}
         </div>
     )

@@ -4,9 +4,11 @@ import Home from './Home'
 import CategoryDetails from './CategoryDetails'
 import BookDetails from './BookDetails'
 import AuthorDetails from './AuthorDetails'
+import Find from '../components/Finder'
 
 function Router() {
     const [route, setRoute] = useState(window.location.hash.substr(1));
+    const [clear, setClear] = useState(false);
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             setRoute(window.location.hash.substr(1));
@@ -25,9 +27,10 @@ function Router() {
 
     return (
         <div>
-            
+            <Find onClear={setClear} />
+
             {getChild()}
-            <Child />
+            <Child clear={clear}/>
         </div>
     )
 }

@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react'
 import CategoryList from '../components/CategoryList'
 import { http } from '../services/http.js'
 import NewBooks from '../components/NewBooks'
-import Find from '../components/Finder'
-
-const Home = () => {
+import ModeSelector from '../components/ModeSelector'
+const Home = (props) => {
+    const {clear} = props
     const [categoryListData, setCategoryListData] = useState([]);
-    const [clear, setClear] = useState(false);
     useEffect(() => {
         http.getCategoryList()
             .then(cat => setCategoryListData(cat))
@@ -18,8 +17,8 @@ const Home = () => {
 
     return (
         <div className="home">
-            <Find onClear={setClear} />
             {clear ? '' : <CategoryList list={categoryListData} />}
+            {/* <ModeSelector /> */}
             <NewBooks />
         </div>
     )
