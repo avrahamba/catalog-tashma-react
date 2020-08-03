@@ -4,11 +4,12 @@ import Home from './Home'
 import CategoryDetails from './CategoryDetails'
 import BookDetails from './BookDetails'
 import AuthorDetails from './AuthorDetails'
-import Find from '../components/Finder'
-
+import Header from '../components/Header'
 function Router() {
     const [route, setRoute] = useState(window.location.hash.substr(1));
     const [clear, setClear] = useState(false);
+    const [mode, setMode] = useState('name')
+    const [results, setResults] = useState(null)
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             setRoute(window.location.hash.substr(1));
@@ -26,11 +27,10 @@ function Router() {
     }
 
     return (
-        <div>
-            <Find onClear={setClear} />
-
+        <div className="router">
             {getChild()}
-            <Child clear={clear}/>
+            <Header onClear={setClear} onMode={setMode} onFind={setResults}/>
+            <Child clear={clear} results={results} mode={mode} />
         </div>
     )
 }

@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const ModeSelector = () => {
+const ModeSelector = (props) => {
+    const [mode, setMode] = useState('name');
+    props.onMode(mode)
+
     return (
-        <div>
-            <label>
-                א-ב
-            <input type="radio"/>
-            </label>
-            <label>
-                שנים
-            <input type="radio"/>
-            </label>
-            <label>
-                מחבר
-            <input type="radio"/>
-            </label>
+        <div className="mode-selector">
+            <form>
+                <div className="radio">
+                    <label>
+                        <input type="radio" value="name" name="modeSelect"
+                            checked={mode === 'name'}
+                            onChange={() => setMode('name')} />
+                        א-ב
+                    </label>
+                </div>
+                <div className="radio">
+                    <label>
+                        <input type="radio" value="authorName" name="modeSelect"
+                            checked={mode === 'authorName'}
+                            onChange={() => setMode('authorName')} />
+                        שם המחבר
+                    </label>
+                </div>
+            </form>
         </div>
     )
 }

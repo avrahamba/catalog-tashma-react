@@ -5,8 +5,8 @@ const getCategoryList = async () => {
     return res.data
 }
 
-const getCategory = async (id,page = 1) => {
-    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?category=${id}&page=${page}`)
+const getCategory = async (id,mode,page = 1) => {
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?category=${id}&page=${page}&mode=${mode}`)
     console.log('res.data', res.data)
     return res.data
 }
@@ -31,11 +31,23 @@ const getFind = async (find) => {
     return res.data
 }
 
+const getRandomBook = async () => {
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?random&a${Math.floor(Math.random()*300)}`)
+    return res.data
+}
+
+const askBook = async (query) => {
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?ask=${query}`)
+    return res.data
+}
+
 export const http = {
     getCategoryList,
     getCategory,
     getBook,
     getAuthor,
     getNews,
-    getFind
+    getFind,
+    getRandomBook,
+    askBook,
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { http } from '../services/http.js'
-
+import { baseUrl } from '../services/config'
 const BookDetails = () => {
 
     const [route, setRoute] = useState(window.location.hash.substr(1));
@@ -19,7 +19,15 @@ const BookDetails = () => {
 
     return (
         <div>
-            {JSON.stringify(book)}
+            <h2>{book?.name}</h2>/<h3>{book?.authorName}</h3>
+            <span>
+                נתחבר ב<span>{book?.place}</span>
+            </span>
+            {book?.yearStart && book?.yearStart !== '-' ? <span> בשנים <span>{book?.yearStart}</span>-<span>{book?.yearEnd}</span></span> : ''}
+            {book?.biographyShort && book?.biographyShort !== '-' ? <div> על הספר בכמה מילים: <br /> <span>{book?.biographyShort}</span></div> : ''}
+            {book?.biographyLong && book?.biographyLong !== '-' ? <div>ביוגרפיה:  <span>{book?.biographyLong}</span></div> : ''}
+            {book?.authorId ? <div> <a href={`${baseUrl}#author-${book?.authorId}`}>כל ספרי המחבר</a> </div> : ''}
+            {/* {JSON.stringify(book)} */}
         </div>
     )
 }
