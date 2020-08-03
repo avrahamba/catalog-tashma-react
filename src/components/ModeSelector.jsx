@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import RadioButton from './RadioButton';
 const ModeSelector = (props) => {
     const [mode, setMode] = useState('name');
     props.onMode(mode)
@@ -7,22 +7,8 @@ const ModeSelector = (props) => {
     return (
         <div className="mode-selector">
             <form>
-                <div className="radio">
-                    <label>
-                        <input type="radio" value="name" name="modeSelect"
-                            checked={mode === 'name'}
-                            onChange={() => setMode('name')} />
-                        א-ב
-                    </label>
-                </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" value="authorName" name="modeSelect"
-                            checked={mode === 'authorName'}
-                            onChange={() => setMode('authorName')} />
-                        שם המחבר
-                    </label>
-                </div>
+                <RadioButton mode={mode} txt="א-ב" name="name" onChange={setMode}/>
+                <RadioButton mode={mode} txt="שם המחבר" name="authorName" onChange={setMode}/>
             </form>
         </div>
     )

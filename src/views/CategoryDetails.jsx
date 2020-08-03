@@ -7,10 +7,11 @@ import { baseUrl } from '../services/config'
 import NewBooks from '../components/NewBooks'
 import RandomAndAsk from '../components/RandomAndAsk'
 
+
 const CategoryDetails = (props) => {
     const [route, setRoute] = useState(window.location.hash.substr(1));
     const [category, setCategory] = useState(null);
-    const { mode } = props
+    const { mode ,findResults} = props
     const [loaclMode, setLoaclMode] = useState(props);
     const init = async () => {
         const route = window.location.hash.substr(1);

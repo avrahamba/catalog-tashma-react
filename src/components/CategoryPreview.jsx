@@ -3,7 +3,7 @@ import { baseUrl } from '../services/config'
 
 function ViewPreview(props) {
     return (
-        <div className="view-preview">
+        <div className="category-preview">
             <a href={baseUrl+'#category-' + props.category.ID}>
                 {props.category.name}
             </a>

@@ -9,7 +9,7 @@ function Router() {
     const [route, setRoute] = useState(window.location.hash.substr(1));
     const [clear, setClear] = useState(false);
     const [mode, setMode] = useState('name')
-    const [results, setResults] = useState(null)
+    const [findResults, setFindResults] = useState(null)
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             setRoute(window.location.hash.substr(1));
@@ -29,8 +29,8 @@ function Router() {
     return (
         <div className="router">
             {getChild()}
-            <Header onClear={setClear} onMode={setMode} onFind={setResults}/>
-            <Child clear={clear} results={results} mode={mode} />
+            <Header onClear={setClear} onMode={setMode} onFind={setFindResults}/>
+            <Child clear={clear} findResults={findResults} mode={mode} />
         </div>
     )
 }
