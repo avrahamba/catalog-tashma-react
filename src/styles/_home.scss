@@ -9,16 +9,18 @@
             a {
             display: flex;
             text-align: center;
-            color: $clr1;
-            background-color: $clr2;
+            color: #222;
+            background-color: $clr4;
             // margin: 17px;
             height: 130px;
             justify-content: center;
             align-items: center;
             border-radius: 6px;
             box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            0 1px 5px 0 rgba(0, 0, 0, 0.12);
             &:hover {
+                // color: $clr1;
+                background-color: $clr2;
                 box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.6), 0 2px 2px 0 rgba(0, 0, 0, 0.42),
                     0 1px 5px 0 rgba(0, 0, 0, 0.36);
             }
