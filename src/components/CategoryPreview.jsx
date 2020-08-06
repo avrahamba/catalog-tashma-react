@@ -3,11 +3,13 @@ import { baseUrl } from '../services/config'
 
 function ViewPreview(props) {
     return (
-        <div className="category-preview">
-            <a href={baseUrl+'#category-' + props.category.ID}>
-                {props.category.name}
-            </a>
-        </div>
+        <a href={baseUrl + '#category-' + props.category.ID}>
+            <div className="category-preview">
+                <span>
+                    {props.category.name}
+                </span>
+            </div>
+        </a>
     )
 }
 

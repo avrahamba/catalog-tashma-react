@@ -33,12 +33,16 @@ const CategoryDetails = (props) => {
     }, [])
     const categoryId = route.includes('page-') ? route.substr(9).substr(0, route.substr(9).indexOf('page-')) : route.substr(9)
     return (
-        <div>
+        <div className="category-details">
+            <div className="details">
             {category ? <h2>{category.categoryDetails.name}</h2> : ''}
             {category?.books ? <BookList bookList={category.books} /> : ''}
             {category ? <AerrayLinks count={category.count} current={page} url={baseUrl + '#category-' + categoryId + 'page-'} /> : ''}
-            <RandomAndAsk />
-            <NewBooks />
+            </div>
+            <div className="side-bar">
+                <RandomAndAsk />
+                <NewBooks />
+            </div>
         </div>
     )
 }

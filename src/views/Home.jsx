@@ -20,7 +20,7 @@ const Home = (props) => {
             {clear ? 
             <ViewResults findResults={findResults} /> :
             <CategoryList list={categoryListData} />}
-            <div>
+            <div className="side-bar">
                 <RandomAndAsk />
                 <NewBooks />
             </div>

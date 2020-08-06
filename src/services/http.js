@@ -7,7 +7,6 @@ const getCategoryList = async () => {
 
 const getCategory = async (id,mode,page = 1) => {
     const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?category=${id}&page=${page}&mode=${mode}`)
-    console.log('res.data', res.data)
     return res.data
 }
 

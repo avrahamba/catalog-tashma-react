@@ -8,7 +8,7 @@ const BookDetails = () => {
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             setRoute(window.location.hash.substr(1));
-            init()
+            if (window.location.hash.includes('book')) init()
         })
         init()
     }, [])
@@ -27,7 +27,6 @@ const BookDetails = () => {
             {book?.biographyShort && book?.biographyShort !== '-' ? <div> על הספר בכמה מילים: <br /> <span>{book?.biographyShort}</span></div> : ''}
             {book?.biographyLong && book?.biographyLong !== '-' ? <div>ביוגרפיה:  <span>{book?.biographyLong}</span></div> : ''}
             {book?.authorId ? <div> <a href={`${baseUrl}#author-${book?.authorId}`}>כל ספרי המחבר</a> </div> : ''}
-            {/* {JSON.stringify(book)} */}
         </div>
     )
 }

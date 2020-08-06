@@ -23,7 +23,7 @@ const RandomAndAsk = () => {
         </div>
     )
     if (askBookMode === 1) return (
-        <div>
+        <div className="random-ask">
             <form onSubmit={submitHandler}>
 
                 <input type="text" onChange={(event) => setAskBookText(event.target.value)} className="form-name-book" placeholder="הכנס שם ספר" />
@@ -33,7 +33,7 @@ const RandomAndAsk = () => {
     )
 
     return (
-        <div>
+        <div className="random-ask">
             <button onClick={() => setAskBookMode(1)}>בקש ספר</button>
             <button onClick={randomClickHandler}>ספר אקראי</button>
         </div>

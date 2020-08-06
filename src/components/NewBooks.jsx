@@ -11,7 +11,8 @@ const init =async () => {
 }
 
 return (
-        <div>
+        <div className="new-books">
+            <h2>ספרים חדשים</h2>
             {books?.books ? <BookList bookList={books.books} /> : ''}
         </div>
     )

@@ -1,13 +1,13 @@
 import React from 'react'
 import { baseUrl } from '../services/config'
-function BookPrevew(props) {
+function BookPreview(props) {
     const { id, name, authorName, authorId } = props.book
 
     return (
-        <div>
+        <div className="book-preview">
             <a href={baseUrl + '#book-' + id}>{name}</a> {authorName && authorName !== '-' ? <span> / <a href={baseUrl + '#author-' + authorId}>{authorName}</a></span> : ''}
         </div>
     )
 }
 
-export default BookPrevew
+export default BookPreview

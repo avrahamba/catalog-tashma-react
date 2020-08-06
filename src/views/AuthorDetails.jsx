@@ -13,12 +13,11 @@ const AuthorDetails = () => {
         })
         const authorId = route.substr(7);
         http.getAuthor(authorId)
-            .then(book => { console.log('book', book); setAuthor(book) })
+            .then(author =>  setAuthor(author) )
     }, [])
 
     return (
         <div>
-            {/* {JSON.stringify(author)} */}
             {author?.author ? <h2>{author.author.name}</h2> : ''}
             {author ? <BookList bookList={author.books} /> : ''}
         </div>

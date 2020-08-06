@@ -1,0 +1,47 @@
+.side-bar {
+    padding-right: 20px;
+    .random-ask {
+        button {
+            color: $clr1;
+            background-color: $clr2;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 15px;
+            font-size: 22px;
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            &:hover {
+                cursor: pointer;
+                border-radius: 6px;
+                box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.6), 0 2px 2px 0 rgba(0, 0, 0, 0.42),
+                    0 1px 5px 0 rgba(0, 0, 0, 0.36);
+            }
+        }
+        input {
+            width: 157px;
+            margin-left: 15px;
+            padding: 10px;
+            height: 21px;
+            font-size: 22px;
+            background-color: #e0f2f9;
+            border: none;
+            border-radius: 6px;
+            border: 3px #5bc0de solid;
+        }
+    }
+    .new-books {
+        background-color: #e0f2f9;
+        border-radius: 6px;
+        border: 3px #5bc0de solid;
+        margin-top: 15px;
+        padding: 10px;
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        > * > * {
+            margin-bottom: 15px;
+        }
+    }
+}

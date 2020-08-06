@@ -1,6 +1,9 @@
-html{
+.App{
     font-size: 22px;
-}
-body{
     direction: rtl;
+    padding: 20px 50px;
+    a{
+        color:$clr3;
+        text-decoration: none;
+    }
 }

@@ -7,7 +7,7 @@ const ArrayLinks = (props) => {
         array.push(i + 1)
     }
     return (
-        <div>
+        <div className="array-links">
             {array.map(num =>  num == current ? <span key={num}>{num}</span> : <a key={num} href={url + num}>{num}</a> )}
         </div>
     )
