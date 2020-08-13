@@ -1,9 +1,9 @@
-import React, {  useState } from 'react'
+import React,{useEffect,useRef} from 'react'
 import { http } from '../services/http.js'
 
 const Finder = (props) => {
+    const textInput = useRef(null);
     const clearHandler = props.onClear
-    const [results, setResults] = useState(null)
     const changeHandler = (e) => {
         init(e.target.value)
     }
@@ -20,10 +20,15 @@ const Finder = (props) => {
             clearHandler(false)
         }
     }
+    useEffect(() => {
+        window.addEventListener('hashchange', () => {
+            textInput.current.value = '';
+        })
+    }, [])
 
     return (
         <div className="find">
-            <input type="text" placeholder="חפש" onChange={changeHandler} />
+            <input type="text" ref={textInput}  placeholder="חפש שם ספר או מחבר" onChange={changeHandler} />
         </div>
     )
 }

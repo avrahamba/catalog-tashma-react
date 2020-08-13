@@ -1,12 +1,12 @@
 import React from 'react'
 import { baseUrl } from '../services/config'
 
-function ViewPreview(props) {
+function ViewPreview({category}) {
     return (
-        <a href={baseUrl + '#category-' + props.category.ID}>
+       <a href={ category.mode==='categories'?baseUrl + '#category-' + category.ID:baseUrl + '#ab-' + category.name}>
             <div className="category-preview">
                 <span>
-                    {props.category.name}
+                    {category.name}
                 </span>
             </div>
         </a>

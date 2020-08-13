@@ -5,20 +5,31 @@ import CategoryDetails from './CategoryDetails'
 import BookDetails from './BookDetails'
 import AuthorDetails from './AuthorDetails'
 import Header from '../components/Header'
+import NewBooks from '../components/NewBooks'
+import RandomAndAsk from '../components/RandomAndAsk'
+import ViewResults from '../components/ViewResults'
+import Menu from '../components/Menu'
+
 function Router() {
     const [route, setRoute] = useState(window.location.hash.substr(1));
     const [clear, setClear] = useState(false);
-    const [mode, setMode] = useState('name')
     const [findResults, setFindResults] = useState(null)
+    const [mode, setMode] = useState('categories');
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             setRoute(window.location.hash.substr(1));
         })
     }, [])
     let Child;
+    const modeHandler = (evMode) => {
+        window.location.hash = ''
+        setMode(evMode)
+    }
     function getChild() {
         Child = Home;
         if (route.substr(0, 'category-'.length) === 'category-')
+            Child = CategoryDetails;
+        if (route.substr(0, 'ab-'.length) === 'ab-')
             Child = CategoryDetails;
         if (route.substr(0, 'book-'.length) === 'book-')
             Child = BookDetails;
@@ -29,8 +40,20 @@ function Router() {
     return (
         <div className="router">
             {getChild()}
-            <Header onClear={setClear} onMode={setMode} onFind={setFindResults}/>
-            <Child clear={clear} findResults={findResults} mode={mode} />
+            <div className="header-continer">
+                <Header onClear={setClear} onFind={setFindResults} />
+                <Menu canngeMode={modeHandler} />
+            </div>
+            <RandomAndAsk />
+            {clear ?
+                <ViewResults findResults={findResults} /> :
+                <div>
+                    {mode === 'categories' || mode === 'ab' ? <Child className="main" mode={mode} /> : ''}
+                </div>
+            }
+            <div className="side-bar">
+                <NewBooks />
+            </div>
         </div>
     )
 }

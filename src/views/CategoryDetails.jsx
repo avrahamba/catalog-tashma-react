@@ -4,19 +4,31 @@ import { http } from '../services/http.js'
 import BookList from '../components/BookList'
 import AerrayLinks from '../components/ArrayLinks'
 import { baseUrl } from '../services/config'
-import NewBooks from '../components/NewBooks'
-import RandomAndAsk from '../components/RandomAndAsk'
+import ModeSelector from '../components/ModeSelector'
+function hex2a(hexx) {
+    var hex = hexx.toString();//force conversion
+    var str = '';
+    for (var i = 0; (i < hex.length && hex.substr(i, 2) !== '00'); i += 2)
+        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    return str;
+}
 
-
-const CategoryDetails = (props) => {
+const CategoryDetails = () => {
     const [route, setRoute] = useState(window.location.hash.substr(1));
     const [category, setCategory] = useState(null);
-    const { mode ,findResults} = props
-    const [loaclMode, setLoaclMode] = useState(props);
+    const [loaclMode, setLoaclMode] = useState(null);
+    const [mode, setMode] = useState('name');
+    let ab = 'א'
     const init = async () => {
         const route = window.location.hash.substr(1);
-        const categoryId = route.includes('page-') ? route.substr(9).substr(0, route.substr(9).indexOf('page-')) : route.substr(9);
-        setCategory(await http.getCategory(categoryId, mode, route.includes('page-') ? route.substr(route.indexOf('page-') + 5) : 1))
+        if (route.includes('category-')) {
+            const categoryId = route.includes('page-') ? route.substr(9).substr(0, route.substr(9).indexOf('page-')) : route.substr(9);
+            setCategory(await http.getCategory(categoryId, mode, route.includes('page-') ? route.substr(route.indexOf('page-') + 5) : 1))
+        } else {
+            const char = route.includes('page-') ? route.substr(3).substr(0, route.substr(3).indexOf('page-')) : route.substr(3);
+            const bookList = await http.getAbBooks(char, mode, route.includes('page-') ? route.substr(route.indexOf('page-') + 5) : 1)
+            setCategory(bookList)
+        }
     }
     if (mode !== loaclMode) {
         setLoaclMode(mode);
@@ -24,7 +36,6 @@ const CategoryDetails = (props) => {
     }
     let page = route.includes('page-') ? route.substr(route.indexOf('page-') + 5) : 1;
     useEffect(() => {
-        console.log('mode', mode)
         window.addEventListener('hashchange', () => {
             setRoute(window.location.hash.substr(1));
             init()
@@ -35,13 +46,15 @@ const CategoryDetails = (props) => {
     return (
         <div className="category-details">
             <div className="details">
-            {category ? <h2>{category.categoryDetails.name}</h2> : ''}
-            {category?.books ? <BookList bookList={category.books} /> : ''}
-            {category ? <AerrayLinks count={category.count} current={page} url={baseUrl + '#category-' + categoryId + 'page-'} /> : ''}
-            </div>
-            <div className="side-bar">
-                <RandomAndAsk />
-                <NewBooks />
+                <div>
+                    <div className="title-container">
+                        {category?.categoryDetails ? <h2>{category.categoryDetails.name}</h2> : <h2>אות {category?.char}'</h2>}
+                        <ModeSelector onMode={setMode} />
+                    </div>
+                    {category?.books ? <BookList bookList={category.books} /> : ''}
+                </div>
+                {category?.categoryDetails ? <AerrayLinks count={category.count} current={page} url={baseUrl + '#category-' + categoryId + 'page-'} /> :
+                    <AerrayLinks count={category?.count} current={page} url={`${baseUrl}#ab-${route.includes('page-') ? route.substr(3).substr(0, route.substr(3).indexOf('page-')) : route.substr(3)}page-`} />}
             </div>
         </div>
     )

@@ -6,10 +6,9 @@ const ModeSelector = (props) => {
 
     return (
         <div className="mode-selector">
-            <form>
-                <RadioButton mode={mode} txt="א-ב" name="name" onChange={setMode}/>
-                <RadioButton mode={mode} txt="שם המחבר" name="authorName" onChange={setMode}/>
-            </form>
+            <span>מיין לפי: </span>
+            <RadioButton mode={mode} txt="א-ב" name="name" onClick={setMode} />
+            <RadioButton mode={mode} txt="שם המחבר" name="authorName" onClick={setMode} />
         </div>
     )
 }

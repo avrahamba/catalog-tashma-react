@@ -5,7 +5,7 @@ function BookPreview(props) {
 
     return (
         <div className="book-preview">
-            <a href={baseUrl + '#book-' + id}>{name}</a> {authorName && authorName !== '-' ? <span> / <a href={baseUrl + '#author-' + authorId}>{authorName}</a></span> : ''}
+            <a className="book" href={baseUrl + '#book-' + id}>{name}</a> {authorName && authorName !== '-' ? <span> / <a href={baseUrl + '#author-' + authorId}>{authorName}</a></span> : ''}
         </div>
     )
 }

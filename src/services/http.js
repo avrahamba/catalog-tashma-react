@@ -1,12 +1,17 @@
 const axios = require('axios');
 
 const getCategoryList = async () => {
-    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/`)
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?type=categories`)
+    return res.data.map(obj => { obj.mode = 'categories'; return obj })
+}
+
+const getCategory = async (id, mode, page = 1) => {
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?category=${id}&page=${page}&mode=${mode}`)
     return res.data
 }
 
-const getCategory = async (id,mode,page = 1) => {
-    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?category=${id}&page=${page}&mode=${mode}`)
+const getAbBooks = async (char, mode, page = 1) => {
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?ab=${char}&page=${page}&mode=${mode}`)
     return res.data
 }
 
@@ -31,7 +36,7 @@ const getFind = async (find) => {
 }
 
 const getRandomBook = async () => {
-    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?random&a${Math.floor(Math.random()*300)}`)
+    const res = await axios.get(`https://jewishoffice.co.il/server/bookapi/?random&a${Math.floor(Math.random() * 300)}`)
     return res.data
 }
 
@@ -49,4 +54,5 @@ export const http = {
     getFind,
     getRandomBook,
     askBook,
+    getAbBooks,
 }

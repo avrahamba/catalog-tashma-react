@@ -13,12 +13,14 @@ const AuthorDetails = () => {
         })
         const authorId = route.substr(7);
         http.getAuthor(authorId)
-            .then(author =>  setAuthor(author) )
+            .then(author => setAuthor(author))
     }, [])
 
     return (
-        <div>
+        <div className="author-details">
             {author?.author ? <h2>{author.author.name}</h2> : ''}
+            {author?.author?.id && author?.author?.name && author?.author?.name !== '-' ? <div> <a href={`https://jewishoffice.co.il/Rabanan/?id=${author?.author?.id}`}>{author?.author?.name} באנציקלופדיית רבנן</a> </div> : ''}
+            <h3>רשימת הספרים:</h3>
             {author ? <BookList bookList={author.books} /> : ''}
         </div>
     )
