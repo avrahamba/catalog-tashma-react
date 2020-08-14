@@ -5,7 +5,6 @@ const Menu = (props) => {
     const [mode, setMode] = useState('categories');
     const { canngeMode } = props
     const modeHandler = (evMode) => {
-        console.log('test')
         canngeMode(evMode)
         setMode(evMode)
     }

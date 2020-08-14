@@ -5,20 +5,12 @@ import BookList from '../components/BookList'
 import AerrayLinks from '../components/ArrayLinks'
 import { baseUrl } from '../services/config'
 import ModeSelector from '../components/ModeSelector'
-function hex2a(hexx) {
-    var hex = hexx.toString();//force conversion
-    var str = '';
-    for (var i = 0; (i < hex.length && hex.substr(i, 2) !== '00'); i += 2)
-        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-    return str;
-}
 
 const CategoryDetails = () => {
     const [route, setRoute] = useState(window.location.hash.substr(1));
     const [category, setCategory] = useState(null);
     const [loaclMode, setLoaclMode] = useState(null);
     const [mode, setMode] = useState('name');
-    let ab = 'א'
     const init = async () => {
         const route = window.location.hash.substr(1);
         if (route.includes('category-')) {
@@ -49,7 +41,7 @@ const CategoryDetails = () => {
                 <div>
                     <div className="title-container">
                         {category?.categoryDetails ? <h2>{category.categoryDetails.name}</h2> : <h2>אות {category?.char}'</h2>}
-                        <ModeSelector onMode={setMode} />
+                        {<ModeSelector onMode={setMode} />}
                     </div>
                     {category?.books ? <BookList bookList={category.books} /> : ''}
                 </div>

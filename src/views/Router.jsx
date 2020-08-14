@@ -46,7 +46,7 @@ function Router() {
             </div>
             <RandomAndAsk />
             {clear ?
-                <ViewResults findResults={findResults} /> :
+                <ViewResults findResults={findResults} clear={() =>{setClear(false)}} /> :
                 <div>
                     {mode === 'categories' || mode === 'ab' ? <Child className="main" mode={mode} /> : ''}
                 </div>

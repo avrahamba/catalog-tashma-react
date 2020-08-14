@@ -3,7 +3,7 @@ import React from 'react'
 const ArrayLinks = (props) => {
     const { count, current, url } = props;
     const array = [];
-    for (let i = 0; i < Math.floor(count / 10) ; i++) {
+    for (let i = 0; i < Math.ceil(count / 50) ; i++) {
         array.push(i + 1)
     }
     return (

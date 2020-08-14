@@ -1,7 +1,5 @@
 import React,{useState, useEffect} from 'react'
 import Find from '../components/Finder'
-import { baseUrl } from '../services/config'
-import ReplyArrow from '../img/ReplyArrow.svg'
 const Header = (props) => {
     const [route, setRoute] = useState(window.location.hash.substr(1));
     useEffect(() => {

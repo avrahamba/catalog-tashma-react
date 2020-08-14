@@ -2,16 +2,16 @@
     .category-list {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-        grid-gap: 22px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-gap: 32px;
         align-items: stretch;
         a {
             display: flex;
             text-align: center;
             color: #222;
-            background-color: $clr4;
+            background-color: $clr1;
             // margin: 17px;
-            height: 130px;
+            height: 110px;
             justify-content: center;
             align-items: center;
             border-radius: 6px;
