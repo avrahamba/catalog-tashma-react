@@ -23,8 +23,11 @@
             }
             .mode-selector {
                 align-self: end;
-
+                font-size: 18px;
                 padding-bottom: 15px;
+                > span {
+                    font-weight: 600;
+                }
                 form {
                     flex-grow: 1;
                     display: flex;

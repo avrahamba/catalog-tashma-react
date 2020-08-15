@@ -5,6 +5,7 @@ import BookList from '../components/BookList'
 import AerrayLinks from '../components/ArrayLinks'
 import { baseUrl } from '../services/config'
 import ModeSelector from '../components/ModeSelector'
+import loadImg from '../img/Eclipse-1s-200px.svg'
 
 const CategoryDetails = () => {
     const [route, setRoute] = useState(window.location.hash.substr(1));
@@ -35,7 +36,7 @@ const CategoryDetails = () => {
         init()
     }, [])
     const categoryId = route.includes('page-') ? route.substr(9).substr(0, route.substr(9).indexOf('page-')) : route.substr(9)
-    return (
+    if (category) return (
         <div className="category-details">
             <div className="details">
                 <div>
@@ -48,6 +49,11 @@ const CategoryDetails = () => {
                 {category?.categoryDetails ? <AerrayLinks count={category.count} current={page} url={baseUrl + '#category-' + categoryId + 'page-'} /> :
                     <AerrayLinks count={category?.count} current={page} url={`${baseUrl}#ab-${route.includes('page-') ? route.substr(3).substr(0, route.substr(3).indexOf('page-')) : route.substr(3)}page-`} />}
             </div>
+        </div>
+    )
+    return (
+        <div className="loading">
+            <img src={loadImg} alt="" />
         </div>
     )
 }
