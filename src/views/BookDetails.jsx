@@ -14,6 +14,7 @@ const BookDetails = () => {
         init()
     }, [])
     const init = async () => {
+        setBook(null)
         const bookId = window.location.hash.substr(6);
         setBook(await http.getBook(bookId))
     }

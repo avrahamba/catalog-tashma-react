@@ -9,20 +9,20 @@
         display: inline;
     }
     h3 {
-        font-size: 22px;
+        font-size: rem(22px);
         font-weight: 500;
     }
     .title,
     .place-years
     {
-        margin-bottom: 15px;
+        margin-bottom: rem(15px);
     }
     .biography-short,
     .biography-long{
-        margin-bottom: 15px;
+        margin-bottom: rem(15px);
         font-size: 0.8em;
         h4{
-            font-size: 22px;
+            font-size: rem(22px);
             margin: 0;
         }
     }

@@ -15,7 +15,7 @@ display: flex;
                     padding: 10px;
                     height: 58px;
                     width: 350px;
-                    font-size: 22px;
+                    font-size: rem(22px);
                     background-color: $clr1;
                     border: none;
                     border-radius: 6px;
@@ -30,7 +30,7 @@ display: flex;
         form {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: rem(15px);
             .radio-button {
                 position: relative;
                 display: inline-block;
@@ -44,9 +44,9 @@ display: flex;
                     cursor: pointer;
                 }
                 .item {
-                    height: 36px;
-                    width: 80px;
-                    padding: 10px;
+                    height: rem(36px);
+                    width: rem(80px);
+                    padding: rem(10px);
                     text-align: center;
                 }
                 &:hover {

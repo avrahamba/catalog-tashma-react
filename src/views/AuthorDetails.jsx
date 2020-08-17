@@ -8,6 +8,7 @@ const AuthorDetails = () => {
     const [author, setAuthor] = useState(null);
     const [, setRoute] = useState(window.location.hash.substr(1));
     const init = async () => {
+        setAuthor(null)
         const authorId = window.location.hash.substr(8);
         setAuthor(await http.getAuthor(authorId))
     }

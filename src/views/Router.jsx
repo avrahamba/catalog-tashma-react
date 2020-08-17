@@ -47,7 +47,7 @@ function Router() {
             <RandomAndAsk />
             {clear ?
                 <ViewResults findResults={findResults} clear={() =>{setClear(false)}} /> :
-                <div>
+                <div className="route-continer">
                     {mode === 'categories' || mode === 'ab' ? <Child className="main" mode={mode} /> : ''}
                 </div>
             }

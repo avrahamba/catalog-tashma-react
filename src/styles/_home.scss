@@ -2,8 +2,8 @@
     .category-list {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        grid-gap: 32px;
+        grid-template-columns: repeat(auto-fill, minmax(rem(140px), 1fr));
+        grid-gap: rem(32px);
         align-items: stretch;
         a {
             display: flex;
@@ -11,7 +11,7 @@
             color: #222;
             background-color: $clr1;
             // margin: 17px;
-            height: 110px;
+            height: rem(110px);
             justify-content: center;
             align-items: center;
             border-radius: 6px;
@@ -38,5 +38,5 @@
     }
 }
 .chars .category-preview span{
-    font-size: 37px;
+    font-size: rem(37px);
 }
